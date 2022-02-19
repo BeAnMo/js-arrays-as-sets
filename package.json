@@ -1,0 +1,48 @@
+{
+  "name": "arrset",
+  "version": "0.1.0",
+  "description": "Treats sorted arrays as Sets",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeAnMo/js-arrays-as-sets.git"
+  },
+  "keywords": [
+    "set",
+    "array",
+    "intersection",
+    "difference",
+    "bisection",
+    "splice"
+  ],
+  "author": "BAM!",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BeAnMo/js-arrays-as-sets/issues"
+  },
+  "homepage": "https://github.com/BeAnMo/js-arrays-as-sets#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json",
+      "node",
+      "mjs"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/__tests__/**/*.mjs",
+      "**/?(*.)+(spec|test).[jt]s?(x)",
+      "**/?(*.)+(spec|test).mjs"
+    ]
+  }
+}
