@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "build": "rollup --config rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
   },
   "homepage": "https://github.com/BeAnMo/js-arrays-as-sets#readme",
   "devDependencies": {
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "rollup": "^2.67.3"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -44,5 +46,11 @@
       "**/?(*.)+(spec|test).[jt]s?(x)",
       "**/?(*.)+(spec|test).mjs"
     ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
   }
 }
