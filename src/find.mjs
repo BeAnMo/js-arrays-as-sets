@@ -1,3 +1,10 @@
+/**
+ * @description Finds the index of ITEM within ARR.
+ * Returns -1 if ARR does not contain ITEM.
+ * @param {(number | string)[]} arr 
+ * @param {number | string} item 
+ * @returns {number}
+ */
 export function findIndex(arr, item) {
   if (item < arr[0]) {
     return -1;
@@ -28,6 +35,13 @@ export function findIndex(arr, item) {
   return -1;
 }
 
+/**
+ * @description Finds the possible index of ITEM within ARR.
+ * Returns -1 if ARR contains ITEM.
+ * @param {(number | string)[]} arr 
+ * @param {number | string} item 
+ * @returns {number}
+ */
 export function findPossibleIndex(arr, item) {
   if (item < arr[0]) {
     return 0;

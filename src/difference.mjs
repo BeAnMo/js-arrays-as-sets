@@ -1,3 +1,8 @@
+/**
+ * @param {(number | string)[]} sm 
+ * @param {(number | string)[]} lg 
+ * @returns {(number | string)[]}
+ */
 export function difference(sm, lg) {
   let i = 0;
   let j = 0;

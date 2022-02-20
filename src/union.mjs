@@ -1,3 +1,8 @@
+/**
+ * @param {(number | string)[]} sm 
+ * @param {(number | string)[]} lg 
+ * @returns {(number | string)[]}
+ */
 export function union(sm, lg) {
   let i = 0;
   let j = 0;
