@@ -24,7 +24,7 @@ describe('findPossibleIndex', () => {
   const originalArr = [-1, 0, 2, 3, 5, 7, 8];
 
   describe('when an item does not exist in an array', () => {
-    it('should return -1', () => {
+    it('should return the insertion index', () => {
       expect(findPossibleIndex(originalArr, -2)).toEqual(0);
       expect(findPossibleIndex(originalArr, 1)).toEqual(2);
       expect(findPossibleIndex(originalArr, 4)).toEqual(4);
