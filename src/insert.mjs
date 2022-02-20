@@ -1,5 +1,5 @@
 
-export function bisectionSplice(arr, item) {
+export function bisectionInsert(arr, item) {
   if (item < arr[0]) {
     arr.unshift(item);
     return arr;
