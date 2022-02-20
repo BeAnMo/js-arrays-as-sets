@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Treats sorted arrays as Sets",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "build": "rollup --config rollup.config.js"
