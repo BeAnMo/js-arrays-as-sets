@@ -35,7 +35,7 @@ export function findPossibleIndex(arr, item) {
 
   // This can be true -1 < -1 ???
   if (item === arr[0]) {
-    return 0;
+    return -1;
   }
 
   const len = arr.length;
@@ -51,7 +51,7 @@ export function findPossibleIndex(arr, item) {
       min = mid;
       mid = Math.ceil((min + max) / 2);
     } else {
-      return mid;
+      return -1;
     }
   }
 

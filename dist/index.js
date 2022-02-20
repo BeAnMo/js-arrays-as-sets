@@ -193,7 +193,7 @@ function findPossibleIndex(arr, item) {
       min = mid;
       mid = Math.ceil((min + max) / 2);
     } else {
-      return mid;
+      return -1;
     }
   }
 

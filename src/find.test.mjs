@@ -33,10 +33,10 @@ describe('findPossibleIndex', () => {
   });
 
   describe('when an item does exist in an array', () => {
-    it('should return the correct index', () => {
-      expect(findPossibleIndex(originalArr, -1)).toEqual(0);
-      expect(findPossibleIndex(originalArr, 3)).toEqual(3);
-      expect(findPossibleIndex(originalArr, 8)).toEqual(6);
+    it('should return -1', () => {
+      expect(findPossibleIndex(originalArr, -1)).toEqual(-1);
+      expect(findPossibleIndex(originalArr, 3)).toEqual(-1);
+      expect(findPossibleIndex(originalArr, 8)).toEqual(-1);
     });
   });
 });
