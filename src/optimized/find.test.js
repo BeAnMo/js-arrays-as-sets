@@ -1,4 +1,4 @@
-import { findIndex, findPossibleIndex } from './find.mjs';
+const { findIndex, findPossibleIndex } = require('./find.js');
 
 describe('findIndex', () => {
   const originalArr = [-1, 0, 2, 3, 5, 7, 8];

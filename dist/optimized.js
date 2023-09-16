@@ -1,243 +1,281 @@
-'use strict';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.arrsetOptimized = factory());
+})(this, (function () { 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+	function getDefaultExportFromCjs (x) {
+		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	}
 
-function bisectionInsert(arr, item) {
-  if (item < arr[0]) {
-    arr.unshift(item);
-    return arr;
-  }
+	var insert = {};
 
-  const len = arr.length;
-  let min = 0;
-  let max = len;
-  let mid = Math.floor(max / 2);
+	insert.bisectionInsert = function bisectionInsert(arr, item) {
+	  if (item < arr[0]) {
+	    arr.unshift(item);
+	    return arr;
+	  }
 
-  while (min < mid && mid < max) {
-    if (item < arr[mid]) {
-      max = mid;
-      mid = Math.ceil((min + max) / 2);
-    } else if(item > arr[mid]) {
-      min = mid;
-      mid = Math.ceil((min + max) / 2);
-    } else {
-      return arr;
-    }
-  }
+	  const len = arr.length;
+	  let min = 0;
+	  let max = len;
+	  let mid = Math.floor(max / 2);
 
-  arr.splice(mid, 0, item);
-  return arr;
-}
+	  while (min < mid && mid < max) {
+	    if (item < arr[mid]) {
+	      max = mid;
+	      mid = Math.ceil((min + max) / 2);
+	    } else if (item > arr[mid]) {
+	      min = mid;
+	      mid = Math.ceil((min + max) / 2);
+	    } else {
+	      return arr;
+	    }
+	  }
 
-/**
- * @param {(number | string)[]} sm 
- * @param {(number | string)[]} lg 
- * @returns {(number | string)[]}
- */
-function intersection(sm, lg) {
-  let i = 0;
-  let j = 0;
-  let results = [];
+	  arr.splice(mid, 0, item);
+	  return arr;
+	};
 
-  while (sm[i] !== undefined && lg[j] !== undefined) {
-    if (sm[i] < lg[j]) {
-      i++;
-    } else if (sm[i] > lg[j]) {
-      j++;
-    } else {
-      results.push(sm[i]);
-      i++;
-      j++;
-    }
-  }
+	var intersection$1 = {};
 
-  return results;
-}
+	/**
+	 * @param {(number | string)[]} sm 
+	 * @param {(number | string)[]} lg 
+	 * @returns {(number | string)[]}
+	 */
 
-/**
- * @param {(number | string)[]} sm 
- * @param {(number | string)[]} lg 
- * @returns {(number | string)[]}
- */
-function difference(sm, lg) {
-  let i = 0;
-  let j = 0;
-  let results = [];
+	intersection$1.intersection = function intersection(sm, lg) {
+	  let i = 0;
+	  let j = 0;
+	  let results = [];
 
-  while (sm[i] !== undefined && lg[j] !== undefined) {
-    if (sm[i] < lg[j]) {
-      results.push(sm[i]);
-      i++;
-    } else if (sm[i] > lg[j]) {
-      j++;
-    } else {
-      i++;
-      j++;
-    }
-  }
+	  while (sm[i] !== undefined && lg[j] !== undefined) {
+	    if (sm[i] < lg[j]) {
+	      i++;
+	    } else if (sm[i] > lg[j]) {
+	      j++;
+	    } else {
+	      results.push(sm[i]);
+	      i++;
+	      j++;
+	    }
+	  }
 
-  while (sm[i] !== undefined) {
-    results.push(sm[i]);
-    i++;
-  }
+	  return results;
+	};
 
-  return results;
-}
+	var difference$1 = {};
 
-/**
- * @param {(number | string)[]} sm 
- * @param {(number | string)[]} lg 
- * @returns {(number | string)[]}
- */
-function union(sm, lg) {
-  let i = 0;
-  let j = 0;
-  let results = [];
+	/**
+	 * @param {(number | string)[]} sm 
+	 * @param {(number | string)[]} lg 
+	 * @returns {(number | string)[]}
+	 */
 
-  while (sm[i] !== undefined && lg[j] !== undefined) {
-    if (sm[i] < lg[j]) {
-      results.push(sm[i]);
-      i++;
-    } else if (sm[i] > lg[j]) {
-      results.push(lg[j]);
-      j++;
-    } else {
-      results.push(sm[i]);
-      i++;
-      j++;
-    }
-  }
+	difference$1.difference = function difference(sm, lg) {
+	  let i = 0;
+	  let j = 0;
+	  let results = [];
 
-  while (sm[i] !== undefined) {
-    results.push(sm[i]);
-    i++;
-  }
+	  while (sm[i] !== undefined && lg[j] !== undefined) {
+	    if (sm[i] < lg[j]) {
+	      results.push(sm[i]);
+	      i++;
+	    } else if (sm[i] > lg[j]) {
+	      j++;
+	    } else {
+	      i++;
+	      j++;
+	    }
+	  }
 
-  while (lg[j] !== undefined) {
-    results.push(lg[j]);
-    j++;
-  }
+	  while (sm[i] !== undefined) {
+	    results.push(sm[i]);
+	    i++;
+	  }
 
-  return results;
-}
+	  return results;
+	};
 
-/**
- * @param {(number | string)[]} sm 
- * @param {(number | string)[]} lg 
- * @returns {number}
- */
-function similarity(sm, lg) {
-  let i = 0;
-  let j = 0;
-  let sumUnion = 0;
-  let sumIntersection = 0;
+	var union$1 = {};
 
-  while (sm[i] !== undefined && lg[j] !== undefined) {
-    if (sm[i] < lg[j]) {
-      sumUnion++;
-      i++;
-    } else if (sm[i] > lg[j]) {
-      sumUnion++;
-      j++;
-    } else {
-      sumUnion++;
-      sumIntersection++;
-      i++;
-      j++;
-    }
-  }
+	/**
+	 * @param {(number | string)[]} sm 
+	 * @param {(number | string)[]} lg 
+	 * @returns {(number | string)[]}
+	 */
 
-  while (sm[i] !== undefined) {
-    sumUnion++;
-    i++;
-  }
+	union$1.union = function union(sm, lg) {
+	  let i = 0;
+	  let j = 0;
+	  let results = [];
 
-  while (lg[j] !== undefined) {
-    sumUnion++;
-    j++;
-  }
+	  while (sm[i] !== undefined && lg[j] !== undefined) {
+	    if (sm[i] < lg[j]) {
+	      results.push(sm[i]);
+	      i++;
+	    } else if (sm[i] > lg[j]) {
+	      results.push(lg[j]);
+	      j++;
+	    } else {
+	      results.push(sm[i]);
+	      i++;
+	      j++;
+	    }
+	  }
 
-  return sumIntersection / sumUnion;
-}
+	  while (sm[i] !== undefined) {
+	    results.push(sm[i]);
+	    i++;
+	  }
 
-/**
- * @description Finds the index of ITEM within ARR.
- * Returns -1 if ARR does not contain ITEM.
- * @param {(number | string)[]} arr 
- * @param {number | string} item 
- * @returns {number}
- */
-function findIndex(arr, item) {
-  if (item < arr[0]) {
-    return -1;
-  }
+	  while (lg[j] !== undefined) {
+	    results.push(lg[j]);
+	    j++;
+	  }
 
-  // This can be true -1 < -1 ???
-  if (item === arr[0]) {
-    return 0;
-  }
+	  return results;
+	};
 
-  const len = arr.length;
-  let min = 0;
-  let max = len;
-  let mid = Math.floor(max / 2);
+	var similarity$1 = {};
 
-  while (min < mid && mid < max) {
-    if (item < arr[mid]) {
-      max = mid;
-      mid = Math.ceil((min + max) / 2);
-    } else if (item > arr[mid]) {
-      min = mid;
-      mid = Math.ceil((min + max) / 2);
-    } else {
-      return mid;
-    }
-  }
+	/**
+	 * @param {(number | string)[]} sm 
+	 * @param {(number | string)[]} lg 
+	 * @returns {number}
+	 */
 
-  return -1;
-}
+	similarity$1.similarity = function similarity(sm, lg) {
+	  let i = 0;
+	  let j = 0;
+	  let sumUnion = 0;
+	  let sumIntersection = 0;
 
-/**
- * @description Finds the possible index of ITEM within ARR.
- * Returns -1 if ARR contains ITEM.
- * @param {(number | string)[]} arr 
- * @param {number | string} item 
- * @returns {number}
- */
-function findPossibleIndex(arr, item) {
-  if (item < arr[0]) {
-    return 0;
-  }
+	  while (sm[i] !== undefined && lg[j] !== undefined) {
+	    if (sm[i] < lg[j]) {
+	      sumUnion++;
+	      i++;
+	    } else if (sm[i] > lg[j]) {
+	      sumUnion++;
+	      j++;
+	    } else {
+	      sumUnion++;
+	      sumIntersection++;
+	      i++;
+	      j++;
+	    }
+	  }
 
-  // This can be true -1 < -1 ???
-  if (item === arr[0]) {
-    return -1;
-  }
+	  while (sm[i] !== undefined) {
+	    sumUnion++;
+	    i++;
+	  }
 
-  const len = arr.length;
-  let min = 0;
-  let max = len;
-  let mid = Math.floor(max / 2);
+	  while (lg[j] !== undefined) {
+	    sumUnion++;
+	    j++;
+	  }
 
-  while (min < mid && mid < max) {
-    if (item < arr[mid]) {
-      max = mid;
-      mid = Math.ceil((min + max) / 2);
-    } else if (item > arr[mid]) {
-      min = mid;
-      mid = Math.ceil((min + max) / 2);
-    } else {
-      return -1;
-    }
-  }
+	  return sumIntersection / sumUnion;
+	};
 
-  return mid;
-}
+	var find = {};
 
-exports.bisectionInsert = bisectionInsert;
-exports.difference = difference;
-exports.findIndex = findIndex;
-exports.findPossibleIndex = findPossibleIndex;
-exports.intersection = intersection;
-exports.similarity = similarity;
-exports.union = union;
+	/**
+	 * @description Finds the index of ITEM within ARR.
+	 * Returns -1 if ARR does not contain ITEM.
+	 * @param {(number | string)[]} arr 
+	 * @param {number | string} item 
+	 * @returns {number}
+	 */
+
+	find.findIndex = function findIndex(arr, item) {
+	  if (item < arr[0]) {
+	    return -1;
+	  }
+
+	  // This can be true -1 < -1 ???
+	  if (item === arr[0]) {
+	    return 0;
+	  }
+
+	  const len = arr.length;
+	  let min = 0;
+	  let max = len;
+	  let mid = Math.floor(max / 2);
+
+	  while (min < mid && mid < max) {
+	    if (item < arr[mid]) {
+	      max = mid;
+	      mid = Math.ceil((min + max) / 2);
+	    } else if (item > arr[mid]) {
+	      min = mid;
+	      mid = Math.ceil((min + max) / 2);
+	    } else {
+	      return mid;
+	    }
+	  }
+
+	  return -1;
+	};
+
+	/**
+	 * @description Finds the possible index of ITEM within ARR.
+	 * Returns -1 if ARR contains ITEM.
+	 * @param {(number | string)[]} arr 
+	 * @param {number | string} item 
+	 * @returns {number}
+	 */
+	find.findPossibleIndex = function findPossibleIndex(arr, item) {
+	  if (item < arr[0]) {
+	    return 0;
+	  }
+
+	  // This can be true -1 < -1 ???
+	  if (item === arr[0]) {
+	    return -1;
+	  }
+
+	  const len = arr.length;
+	  let min = 0;
+	  let max = len;
+	  let mid = Math.floor(max / 2);
+
+	  while (min < mid && mid < max) {
+	    if (item < arr[mid]) {
+	      max = mid;
+	      mid = Math.ceil((min + max) / 2);
+	    } else if (item > arr[mid]) {
+	      min = mid;
+	      mid = Math.ceil((min + max) / 2);
+	    } else {
+	      return -1;
+	    }
+	  }
+
+	  return mid;
+	};
+
+	const { bisectionInsert } = insert;
+	const { intersection } = intersection$1;
+	const { difference } = difference$1;
+	const { union } = union$1;
+	const { similarity } = similarity$1;
+	const { findIndex, findPossibleIndex } = find;
+
+	var optimized = {
+	    bisectionInsert,
+	    intersection,
+	    difference,
+	    union,
+	    similarity,
+	    findIndex,
+	    findPossibleIndex
+	};
+
+	var index = /*@__PURE__*/getDefaultExportFromCjs(optimized);
+
+	return index;
+
+}));

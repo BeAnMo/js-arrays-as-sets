@@ -1,16 +1,28 @@
-export default [
+const commonjs = require('@rollup/plugin-commonjs');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+
+const plugins = [
+  commonjs(),
+  nodeResolve(),
+];
+
+module.exports = [
   {
-    input: 'src/flexible/index.mjs',
+    input: 'src/flexible/index.js',
     output: {
       file: 'dist/flexible.js',
-      format: 'cjs',
+      format: 'umd',
+      name: 'arrset'
     },
+    plugins
   },
   {
-    input: 'src/optimized/index.mjs',
+    input: 'src/optimized/index.js',
     output: {
       file: 'dist/optimized.js',
-      format: 'cjs',
+      format: 'umd',
+      name: 'arrsetOptimized'
     },
+    plugins
   },
 ];

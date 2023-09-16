@@ -4,7 +4,7 @@
  * @param {any[]} lg
  * @returns {number}
  */
-export function similarity(compare, sm, lg) {
+exports.similarity = function similarity(compare, sm, lg) {
   let i = 0;
   let j = 0;
   let sumUnion = 0;

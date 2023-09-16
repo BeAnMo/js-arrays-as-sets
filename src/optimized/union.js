@@ -1,38 +1,36 @@
 /**
  * @param {(number | string)[]} sm 
  * @param {(number | string)[]} lg 
- * @returns {number}
+ * @returns {(number | string)[]}
  */
-export function similarity(sm, lg) {
+exports.union = function union(sm, lg) {
   let i = 0;
   let j = 0;
-  let sumUnion = 0;
-  let sumIntersection = 0;
+  let results = [];
 
   while (sm[i] !== undefined && lg[j] !== undefined) {
     if (sm[i] < lg[j]) {
-      sumUnion++;
+      results.push(sm[i]);
       i++;
     } else if (sm[i] > lg[j]) {
-      sumUnion++;
+      results.push(lg[j]);
       j++;
     } else {
-      sumUnion++;
-      sumIntersection++;
+      results.push(sm[i]);
       i++;
       j++;
     }
   }
 
   while (sm[i] !== undefined) {
-    sumUnion++;
+    results.push(sm[i]);
     i++;
   }
 
   while (lg[j] !== undefined) {
-    sumUnion++;
+    results.push(lg[j]);
     j++;
   }
 
-  return sumIntersection / sumUnion;
+  return results;
 }

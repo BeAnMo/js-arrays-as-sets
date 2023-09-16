@@ -5,7 +5,7 @@
  * @param {number | string} item 
  * @returns {number}
  */
-export function findIndex(arr, item) {
+exports.findIndex = function findIndex(arr, item) {
   if (item < arr[0]) {
     return -1;
   }
@@ -42,7 +42,7 @@ export function findIndex(arr, item) {
  * @param {number | string} item 
  * @returns {number}
  */
-export function findPossibleIndex(arr, item) {
+exports.findPossibleIndex = function findPossibleIndex(arr, item) {
   if (item < arr[0]) {
     return 0;
   }

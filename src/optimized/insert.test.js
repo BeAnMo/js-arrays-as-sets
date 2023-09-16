@@ -1,4 +1,4 @@
-import { bisectionInsert } from './insert.mjs';
+const { bisectionInsert } = require('./insert.js');
 
 describe('bisectionInsert', () => {
   const originalArr = [0, 2, 3, 5, 6, 8, 11];

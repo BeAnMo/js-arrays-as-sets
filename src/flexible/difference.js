@@ -4,7 +4,7 @@
  * @param {any[]} lg
  * @returns {any[]}
  */
-export function difference(compare, sm, lg) {
+exports.difference = function difference(compare, sm, lg) {
   let i = 0;
   let j = 0;
   let results = [];

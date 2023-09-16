@@ -3,7 +3,7 @@
  * @param {(number | string)[]} lg 
  * @returns {(number | string)[]}
  */
-export function union(sm, lg) {
+exports.difference = function difference(sm, lg) {
   let i = 0;
   let j = 0;
   let results = [];
@@ -13,10 +13,8 @@ export function union(sm, lg) {
       results.push(sm[i]);
       i++;
     } else if (sm[i] > lg[j]) {
-      results.push(lg[j]);
       j++;
     } else {
-      results.push(sm[i]);
       i++;
       j++;
     }
@@ -25,11 +23,6 @@ export function union(sm, lg) {
   while (sm[i] !== undefined) {
     results.push(sm[i]);
     i++;
-  }
-
-  while (lg[j] !== undefined) {
-    results.push(lg[j]);
-    j++;
   }
 
   return results;
