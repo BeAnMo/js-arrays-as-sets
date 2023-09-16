@@ -1,4 +1,4 @@
-import { intersection } from "./intersection.mjs";
+const { intersection } = require("./intersection.js");
 
 describe('intersection', () => {
   const cases = [

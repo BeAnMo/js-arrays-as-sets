@@ -5,7 +5,7 @@
  * @param {any[]} arr
  * @returns {number}
  */
-export function findIndex(compare, arr) {
+exports.findIndex = function findIndex(compare, arr) {
   const cmp = compare(arr[0]);
 
   if (cmp < 0) {
@@ -45,7 +45,7 @@ export function findIndex(compare, arr) {
  * @param {any[]} arr
  * @returns {number}
  */
-export function findPossibleIndex(compare, arr) {
+exports.findPossibleIndex = function findPossibleIndex(compare, arr) {
   const cmp = compare(arr[0]);
 
   if (cmp < 0) {

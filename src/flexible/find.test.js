@@ -1,4 +1,4 @@
-import { findIndex, findPossibleIndex } from './find.mjs';
+const { findIndex, findPossibleIndex } = require('./find.js');
 
 const compare = (n) => (m) => n - m;
 

@@ -3,7 +3,7 @@
  * @param {(number | string)[]} lg 
  * @returns {(number | string)[]}
  */
-export function intersection(sm, lg) {
+exports.intersection = function intersection(sm, lg) {
   let i = 0;
   let j = 0;
   let results = [];

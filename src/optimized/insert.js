@@ -1,5 +1,5 @@
 
-export function bisectionInsert(arr, item) {
+exports.bisectionInsert = function bisectionInsert(arr, item) {
   if (item < arr[0]) {
     arr.unshift(item);
     return arr;
@@ -14,7 +14,7 @@ export function bisectionInsert(arr, item) {
     if (item < arr[mid]) {
       max = mid;
       mid = Math.ceil((min + max) / 2);
-    } else if(item > arr[mid]) {
+    } else if (item > arr[mid]) {
       min = mid;
       mid = Math.ceil((min + max) / 2);
     } else {
