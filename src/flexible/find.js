@@ -6,6 +6,12 @@
  * @returns {number}
  */
 exports.findIndex = function findIndex(compare, arr) {
+  const len = arr.length;
+
+  if(len === 0){
+    return -1;
+  }
+
   const cmp = compare(arr[0]);
 
   if (cmp < 0) {
@@ -16,7 +22,6 @@ exports.findIndex = function findIndex(compare, arr) {
     return 0;
   }
 
-  const len = arr.length;
   let min = 0;
   let max = len;
   let mid = Math.floor(max / 2);
@@ -46,6 +51,12 @@ exports.findIndex = function findIndex(compare, arr) {
  * @returns {number}
  */
 exports.findPossibleIndex = function findPossibleIndex(compare, arr) {
+  const len = arr.length;
+
+  if(len === 0){
+    return 0;
+  }
+
   const cmp = compare(arr[0]);
 
   if (cmp < 0) {
@@ -56,7 +67,6 @@ exports.findPossibleIndex = function findPossibleIndex(compare, arr) {
     return -1;
   }
 
-  const len = arr.length;
   let min = 0;
   let max = len;
   let mid = Math.floor(max / 2);

@@ -3,6 +3,12 @@ const { findIndex, findPossibleIndex } = require('./find.js');
 const compare = (n) => (m) => n - m;
 
 describe('findIndex', () => {
+  describe('when an array is empty', () => {
+    it('should return -1', () => {
+      expect(findIndex(compare(1), [])).toEqual(-1);
+    });
+  });
+
   const originalArr = [-1, 0, 2, 3, 5, 7, 8];
 
   describe('when an item does not exist in an array', () => {
@@ -23,6 +29,12 @@ describe('findIndex', () => {
 });
 
 describe('findPossibleIndex', () => {
+  describe('when an array is empty', () => {
+    it('should return 0', () => {
+      expect(findPossibleIndex(compare(1), [])).toEqual(0);
+    });
+  });
+  
   const originalArr = [-1, 0, 2, 3, 5, 7, 8];
 
   describe('when an item does not exist in an array', () => {

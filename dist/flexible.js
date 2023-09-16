@@ -174,6 +174,12 @@
 	 */
 
 	find.findIndex = function findIndex(compare, arr) {
+	  const len = arr.length;
+
+	  if(len === 0){
+	    return -1;
+	  }
+
 	  const cmp = compare(arr[0]);
 
 	  if (cmp < 0) {
@@ -184,7 +190,6 @@
 	    return 0;
 	  }
 
-	  const len = arr.length;
 	  let min = 0;
 	  let max = len;
 	  let mid = Math.floor(max / 2);
@@ -214,6 +219,12 @@
 	 * @returns {number}
 	 */
 	find.findPossibleIndex = function findPossibleIndex(compare, arr) {
+	  const len = arr.length;
+
+	  if(len === 0){
+	    return 0;
+	  }
+
 	  const cmp = compare(arr[0]);
 
 	  if (cmp < 0) {
@@ -224,7 +235,6 @@
 	    return -1;
 	  }
 
-	  const len = arr.length;
 	  let min = 0;
 	  let max = len;
 	  let mid = Math.floor(max / 2);
