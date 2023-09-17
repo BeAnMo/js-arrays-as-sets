@@ -226,13 +226,17 @@
 	  }
 
 	  const cmp = compare(arr[0]);
-
+	  
 	  if (cmp < 0) {
 	    return 0;
 	  }
 
 	  if (cmp === 0) {
 	    return -1;
+	  }
+
+	  if(len === 1){
+	    return 1;
 	  }
 
 	  let min = 0;
