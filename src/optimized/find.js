@@ -53,6 +53,11 @@ exports.findPossibleIndex = function findPossibleIndex(arr, item) {
   }
 
   const len = arr.length;
+
+  if(len === 1){
+    return 1;
+  }
+
   let min = 0;
   let max = len;
   let mid = Math.floor(max / 2);

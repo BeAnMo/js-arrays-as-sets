@@ -7,6 +7,19 @@ describe('findIndex', () => {
     });
   });
 
+  describe('when an array has 1 element', () => {
+    const arr = [2];
+
+    it('should return -1', () => {
+      expect(findIndex(arr, 1)).toEqual(-1);
+      expect(findIndex(arr, 3)).toEqual(-1);
+    });
+
+    it('should return 0', () => {
+      expect(findIndex(arr, 2)).toEqual(0);
+    });
+  });
+
   const originalArr = [-1, 0, 2, 3, 5, 7, 8];
 
   describe('when an item does not exist in an array', () => {
@@ -30,6 +43,22 @@ describe('findPossibleIndex', () => {
   describe('when an array is empty', () => {
     it('should return 0', () => {
       expect(findPossibleIndex([], 1)).toEqual(0);
+    });
+  });
+
+  describe('when an array has 1 element', () => {
+    const arr = [2];
+
+    it('should return -1', () => {
+      expect(findPossibleIndex(arr, 2)).toEqual(-1);
+    });
+
+    it('should return 0', () => {
+      expect(findPossibleIndex(arr, 1)).toEqual(0);
+    });
+
+    it('should return 1', () => {
+      expect(findPossibleIndex(arr, 3)).toEqual(1);
     });
   });
 
